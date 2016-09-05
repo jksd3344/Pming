@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '4y&83^i2s*%c68htp+3399ibaq_n8%-f1$v3rj5=+dm0o=c1iw'
-
+TEMPLATES_PATH = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -40,22 +40,21 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 ]
 
-ROOT_URLCONF = 'Processmonitoring.urls'
+ROOT_URLCONF = 'Pming.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Processmonitoring.wsgi.application'
+WSGI_APPLICATION = 'Pming.wsgi.application'
 
 
 # Database
@@ -76,11 +75,14 @@ WSGI_APPLICATION = 'Processmonitoring.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Shake',
+        'HOST': '123.57.226.182',
+        'USER': 'root',
+        'PASSWORD': 'Jksd3344',
+        'PORT': '3306',
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
